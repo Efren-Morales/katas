@@ -19,8 +19,7 @@ describe('Template string, can contain multiline content', function() {
       var x = 42;
       it('like simple variables', function() {
         //var multiline = `line 1 $ {x}`;
-        var multiline = `line 1\n
-      ${x}`;//bunched up the $ and {x} to the right and returned them
+        var multiline = `line 1\n${x}`;//bunched up the $ and {x} to the right and returned them
       //to show an additinal line.  added \n next to 1 to add another line
   
         assert.equal(multiline, 'line 1\n\n    42');
