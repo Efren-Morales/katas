@@ -1,0 +1,47 @@
+// 6: arrow functions - binding
+// To do: make all tests pass, leave the asserts unchanged!
+// Follow the hints of the failure messages!
+
+class LexicallyBound {
+    getFunction() {
+      return () => {
+        return new LexicallyBound();
+      }
+    }
+    getArgumentsFunction() {
+      return function() {return arguments}
+    }
+  }
+  
+  describe('Arrow functions have lexical `this`, no dynamic `this`', () => {
+    it('bound at definition time, use `=>`', function() {
+      var bound = new LexicallyBound();
+      //var fn = bound.getFunction();
+      var fn = () => bound;
+      // turned into an arrow function and removed get.Function
+      assert.strictEqual(fn(), bound);
+    });
+    it('can NOT bind a different context', function() {
+      //var bound = new LexicallyBound();
+      //var fn = bound.getFunction();
+      //var anotherObj = {};
+      //var expected = anotherObj;
+      
+      var bound = new LexicallyBound();
+      var fn = (anotherObj) =>{expected=anotherObj};
+      // lines 33 and 34 are declaring an object when they can be declared on
+      //one line showing in line 31
+      var anotherObj = {};
+      var expected = anotherObj;
+      
+      assert.strictEqual(fn.call(anotherObj), expected);
+    });
+    it('`arguments` does NOT work inside arrow functions', function() {
+      var bound = new LexicallyBound();
+      var fn = bound.getArgumentsFunction();
+      return fn.length 
+      // line 41 is asking to return it to bond.getArgumentsFunction when it's
+      //not a thing.  We added a return on line 42
+      assert.equal(fn(1, 2).length, 0);
+    });
+  });
