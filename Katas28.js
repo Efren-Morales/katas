@@ -39,7 +39,7 @@ describe('Inside a class`s constructor `super()` can be used', () => {
       class ParentClassA {constructor() {"parent"}}
       class B extends ParentClassA {constructor() {super();
           //this.isTop = '' + super.konstructer;}}
-          this.isTop = '' + super.konstructer;}}
+          this.isTop = '' + super.Constructor;}}
   //konstructer is misspelled fixing it will fix the 'undefined' 
       assert(new B().isTop.includes('ParentClassA'), new B().isTop);
     });
